@@ -45,6 +45,14 @@ body {
   /* Theme toggle component */
   --theme-toggle-bg: #fff;
   --theme-toggle-icon: #000;
+
+  /* Sun cycle component */
+  --sun-transform: translateX(0);
+  --sun-opacity: 1;
+  --sun-transition: transform 1s ease-out, opacity 1s ease-in-out;
+  --moon-transform: translateX(10vw);
+  --moon-opacity: 0;
+  --moon-transition: transform 1s ease-out, opacity 1s ease-in-out;
 }
 
 .dark-mode {
@@ -67,4 +75,12 @@ body {
   /* Theme toggle component */
   --theme-toggle-bg: #000;
   --theme-toggle-icon: #fff;
+
+  /* Sun cycle component */
+  --sun-transform: translateX(-10vw);
+  --sun-opacity: 0;
+  --sun-transition: transform 1s ease-out, opacity 2s ease-in-out;
+  --moon-transform: translateX(0);
+  --moon-opacity: 1;
+  --moon-transition: transform 1s ease-out, opacity 2s ease-in-out;
 }

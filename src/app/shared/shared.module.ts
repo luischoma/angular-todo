@@ -5,10 +5,15 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { WindowContainerComponent } from './components/window-container/window-container.component';
 import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
+import { SunCycleComponent } from './components/sun-cycle/sun-cycle.component';
 
 @NgModule({
-  declarations: [WindowContainerComponent, ThemeToggleComponent],
+  declarations: [
+    WindowContainerComponent,
+    ThemeToggleComponent,
+    SunCycleComponent,
+  ],
   imports: [CommonModule, MatIconModule, MatButtonModule],
-  exports: [WindowContainerComponent, ThemeToggleComponent],
+  exports: [WindowContainerComponent, ThemeToggleComponent, SunCycleComponent],
 })
 export class SharedModule {}

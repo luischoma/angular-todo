@@ -1,0 +1,15 @@
+.task-item {
+  width: inherit;
+  height: 200px;
+  display: flex;
+  background-color: var(--task-item-bg);
+  color: var(--text-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+}

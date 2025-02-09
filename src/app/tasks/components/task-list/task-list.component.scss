@@ -1,0 +1,17 @@
+@import "breakpoints";
+
+.task-grid {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+
+  grid-template-columns: 2fr;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

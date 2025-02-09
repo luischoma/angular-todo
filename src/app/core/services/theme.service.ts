@@ -15,32 +15,22 @@ export class ThemeService {
     this.loadTheme();
   }
 
-  private loadTheme(): void {
-    const savedTheme = this.localStorageService.getItem<ThemeEnum>(
-      this.themeKey,
-      ThemeEnum.LIGHT
-    );
-
-    this.applyTheme(savedTheme);
-  }
-
   toggleTheme(): void {
-    const currentTheme = document.body.classList.contains(ThemeEnum.DARK)
-      ? ThemeEnum.DARK
-      : ThemeEnum.LIGHT;
+    const currentTheme = this.getCurrentTheme();
     const newTheme =
       currentTheme === ThemeEnum.LIGHT ? ThemeEnum.DARK : ThemeEnum.LIGHT;
 
     this.applyTheme(newTheme);
   }
 
-  applyTheme(theme: ThemeEnum): void {
+  private applyTheme(theme: ThemeEnum): void {
     if (!this.availableThemes.includes(theme)) {
       return;
     }
 
-    document.body.classList.remove(...this.availableThemes);
-    document.body.classList.add(theme);
+    const htmlElement = document.documentElement;
+    htmlElement.classList.remove(...this.availableThemes);
+    htmlElement.classList.add(theme);
 
     this.localStorageService.setItem(this.themeKey, theme);
   }
@@ -50,5 +40,10 @@ export class ThemeService {
       this.themeKey,
       ThemeEnum.LIGHT
     );
+  }
+
+  private loadTheme(): void {
+    const savedTheme = this.getCurrentTheme();
+    this.applyTheme(savedTheme);
   }
 }

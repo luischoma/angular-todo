@@ -1,15 +1,14 @@
 @import "breakpoints";
 
 .window {
-  width: 100%;
-  max-width: 980px;
+  min-height: 100%;
+  flex-grow: 1;
   background: var(--window-bg-color);
   border-radius: 10px;
   box-shadow: var(--window-shadow);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  margin: 50px auto;
   font-family: sans-serif;
   color: var(--text-color);
 }
@@ -31,7 +30,6 @@
 
 .window-content {
   padding: 8px 16px;
-  flex: 1;
 
   @media (min-width: $breakpoint-mobile) {
     padding: 16px 32px;

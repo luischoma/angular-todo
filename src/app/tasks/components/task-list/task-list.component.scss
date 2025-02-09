@@ -4,6 +4,7 @@
   display: grid;
   gap: 16px;
   padding: 16px;
+  flex-grow: 1;
 
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 

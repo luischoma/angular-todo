@@ -6,6 +6,7 @@ body {
   box-sizing: border-box;
   background-color: var(--background-color);
   overflow-x: hidden;
+  transition: background-color 1.2s ease-in-out;
 }
 
 body {
@@ -16,12 +17,11 @@ body {
 .containerized {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  min-width: 100%;
   background-color: transparent;
-  padding: 0 6%;
+  align-items: center;
 
   @media (max-width: $breakpoint-tablet) {
-    padding: 8%;
   }
 }
 
@@ -43,7 +43,7 @@ body {
   --task-item-border: #ddd;
 
   /* Theme toggle component */
-  --theme-toggle-bg: #fff;
+  --theme-toggle-bg: #e4e4a0;
   --theme-toggle-icon: #000;
 
   /* Sun cycle component */
@@ -73,7 +73,7 @@ body {
   --task-item-border: #333;
 
   /* Theme toggle component */
-  --theme-toggle-bg: #000;
+  --theme-toggle-bg: #6f6d6d;
   --theme-toggle-icon: #fff;
 
   /* Sun cycle component */

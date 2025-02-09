@@ -1,8 +1,11 @@
+@import "breakpoints";
+
 html,
 body {
   height: 100%;
   box-sizing: border-box;
   background-color: var(--background-color);
+  overflow-x: hidden;
 }
 
 body {
@@ -13,8 +16,13 @@ body {
 .containerized {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 5%;
+  width: 100%;
+  background-color: transparent;
+  padding: 0 6%;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 8%;
+  }
 }
 
 :root {

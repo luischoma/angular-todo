@@ -1,0 +1,43 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.containerized {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 5%;
+}
+
+:root {
+  --primary-color: #3f51b5;
+  --accent-color: #ff4081;
+  --warn-color: #f44336;
+
+  --background-color: #f0f0f0;
+  --window-header-color: #d6d6d6;
+  --text-color: #000;
+
+  --window-close-color: #ff5f57;
+  --window-minimize-color: #ffbd2e;
+  --window-maximize-color: #28c840;
+}
+
+.dark-mode {
+  --primary-color: #90caf9;
+  --accent-color: #f48fb1;
+  --warn-color: #ef5350;
+
+  --background-color: #121212;
+  --window-header-color: #333;
+  --text-color: #fff;
+
+  --window-close-color: #ff5f57;
+  --window-minimize-color: #ffbd2e;
+  --window-maximize-color: #28c840;
+}

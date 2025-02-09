@@ -24,7 +24,7 @@ body {
 
   /* Window (mac-like) container component */
   --window-shadow: 0 0 200px rgba(0, 0, 20, 0.5);
-  --window-background-color: #f0f0f0;
+  --window-bg-color: #f0f0f0;
   --window-header-color: #d6d6d6;
   --window-close-color: #ff5f57;
   --window-minimize-color: #ffbd2e;
@@ -33,6 +33,10 @@ body {
   /* Task list component */
   --task-item-bg: #fff;
   --task-item-border: #ddd;
+
+  /* Theme toggle component */
+  --theme-toggle-bg: #fff;
+  --theme-toggle-icon: #000;
 }
 
 .dark-mode {
@@ -43,7 +47,7 @@ body {
   /* Window (mac-like) container component */
   --window-shadow: 0 0 100px rgba(156, 149, 149, 0.3);
   --window-header-color: #333;
-  --window-background-color: #121212;
+  --window-bg-color: #121212;
   --window-close-color: #ff5f57;
   --window-minimize-color: #ffbd2e;
   --window-maximize-color: #28c840;
@@ -51,4 +55,8 @@ body {
   /* Task list component */
   --task-item-bg: #1e1e1e;
   --task-item-border: #333;
+
+  /* Theme toggle component */
+  --theme-toggle-bg: #000;
+  --theme-toggle-icon: #fff;
 }

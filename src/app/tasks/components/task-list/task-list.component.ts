@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 
 import { Task } from 'src/app/core/models/task.model';
 
@@ -8,17 +11,20 @@ import { Task } from 'src/app/core/models/task.model';
   styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent {
-  tasks: Task[] = [
-    { id: 1, name: 'Todo 1', completed: false },
-    { id: 2, name: 'Todo 2', completed: true },
-    { id: 3, name: 'todo 3333 ', completed: true },
-    { id: 4, name: '...', completed: true },
-    { id: 5, name: 'vbbb', completed: true },
-    { id: 3, name: 'todo 3333 ', completed: true },
-    { id: 4, name: '...', completed: true },
-    { id: 5, name: 'vbbb', completed: true },
-    { id: 3, name: 'todo 3333 ', completed: true },
-    { id: 4, name: '...', completed: true },
-    { id: 5, name: 'vbbb', completed: true },
-  ];
+  tasks: Task[] = [];
+
+  constructor(private dialog: MatDialog) {}
+
+  openAddTaskDialog(): void {
+    const dialogRef = this.dialog.open(TaskDialogComponent, {
+      width: '50%',
+      data: { title: 'Add Task' },
+    });
+
+    dialogRef.afterClosed().subscribe((result: string | undefined) => {
+      if (result) {
+        this.tasks.push({ name: result, completed: false });
+      }
+    });
+  }
 }

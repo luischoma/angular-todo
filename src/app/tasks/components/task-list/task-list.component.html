@@ -1,11 +1,16 @@
-<div class="task-list-container">
+<ng-container *ngIf="tasks$ | async as tasks">
   <h2 *ngIf="tasks.length === 0" class="empty-message">No tasks available</h2>
 
-  <div class="task-grid" *ngIf="tasks.length > 0">
-    <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
+  <div class="task-grid">
+    <app-task-item
+      *ngFor="let task of tasks"
+      [task]="task"
+      (toggle)="toggleTaskCompletion(task.id)"
+      (delete)="removeTask(task.id)"
+    ></app-task-item>
   </div>
 
   <button mat-fab class="add-task-btn" (click)="openAddTaskDialog()">
     <mat-icon>add</mat-icon>
   </button>
-</div>
+</ng-container>

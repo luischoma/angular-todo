@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
+import { TaskService } from '../../services/task.service';
 
 import { Task } from 'src/app/core/models/task.model';
 
@@ -11,20 +13,24 @@ import { Task } from 'src/app/core/models/task.model';
   styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent {
-  tasks: Task[] = [];
+  tasks$: Observable<Task[]>;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private taskService: TaskService) {
+    this.tasks$ = this.taskService.tasks$;
+  }
 
   openAddTaskDialog(): void {
-    const dialogRef = this.dialog.open(TaskDialogComponent, {
+    this.dialog.open(TaskDialogComponent, {
       width: '50%',
       data: { title: 'Add Task' },
     });
+  }
 
-    dialogRef.afterClosed().subscribe((result: string | undefined) => {
-      if (result) {
-        this.tasks.push({ name: result, completed: false });
-      }
-    });
+  removeTask(taskId: string): void {
+    this.taskService.removeTask(taskId);
+  }
+
+  toggleTaskCompletion(taskId: string): void {
+    this.taskService.toggleTaskCompletion(taskId);
   }
 }

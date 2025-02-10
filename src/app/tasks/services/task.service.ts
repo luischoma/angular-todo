@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Task } from '../../core/models/task.model';
 import { LocalStorageService } from '../../core/services/local-storage.service';
@@ -10,14 +10,16 @@ import { LocalStorageService } from '../../core/services/local-storage.service';
 export class TaskService {
   private readonly storageKey = 'tasks';
   private tasksStore: BehaviorSubject<Task[]>;
-  tasks$ = new BehaviorSubject<Task[]>([]).asObservable();
+  tasks$: Observable<Task[]>;
 
   constructor(private localStorageService: LocalStorageService) {
     const savedTasks = this.localStorageService.getItem<Task[]>(
       this.storageKey,
       []
     );
+
     this.tasksStore = new BehaviorSubject<Task[]>(savedTasks);
+    this.tasks$ = this.tasksStore.asObservable();
   }
 
   getTasks(): Task[] {
@@ -34,12 +36,12 @@ export class TaskService {
     this.updateTasks(updatedTasks);
   }
 
-  removeTask(taskId: number): void {
+  removeTask(taskId: string): void {
     const updatedTasks = this.getTasks().filter((task) => task.id !== taskId);
     this.updateTasks(updatedTasks);
   }
 
-  toggleTaskCompletion(taskId: number): void {
+  toggleTaskCompletion(taskId: string): void {
     const updatedTasks = this.getTasks().map((task) =>
       task.id === taskId ? { ...task, completed: !task.completed } : task
     );

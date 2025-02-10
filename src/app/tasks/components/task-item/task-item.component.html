@@ -1,4 +1,14 @@
 <mat-card class="task-item">
-  <span>{{ task.name }}</span>
-  <!-- <ng-content></ng-content> -->
+  <div class="task-content">
+    <p>{{ task.name }}</p>
+  </div>
+
+  <div class="task-actions">
+    <button mat-icon-button class="complete-btn">
+      <mat-icon>check</mat-icon>
+    </button>
+    <button mat-icon-button class="delete-btn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
 </mat-card>

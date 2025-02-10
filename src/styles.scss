@@ -15,6 +15,9 @@ textarea {
   font-family: "Fredoka", sans-serif !important;
 }
 
+* {
+  box-sizing: border-box;
+}
 html,
 body {
   height: 100%;
@@ -84,6 +87,14 @@ body {
   /* Cloud color */
   --cloud-bg-color: #8f8d8d;
   --cloud-accent-color: #f0f0f0;
+
+  /* Complete task button */
+  --complete-toggle-bg: #94d86a;
+  --complete-toggle-icon: #000;
+
+  /* Delete task button */
+  --delete-toggle-bg: #ea6d6d;
+  --delete-toggle-icon: #000;
 }
 
 .dark-mode {
@@ -118,4 +129,12 @@ body {
   --moon-transform: translateX(0);
   --moon-opacity: 1;
   --moon-transition: transform 1s ease-out, opacity 2s ease-in-out;
+
+  /* Complete task button */
+  --complete-toggle-bg: #94d86a;
+  --complete-toggle-icon: #000;
+
+  /* Delete task button */
+  --delete-toggle-bg: #ea6d6d;
+  --delete-toggle-icon: #000;
 }

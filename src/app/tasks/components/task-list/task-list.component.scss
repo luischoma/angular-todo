@@ -36,3 +36,9 @@
     transform: scale(1.1);
   }
 }
+
+.empty-message {
+  text-align: center;
+  color: var(--text-color);
+  margin-top: 20px;
+}

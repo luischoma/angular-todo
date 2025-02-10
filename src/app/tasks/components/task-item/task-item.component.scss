@@ -12,14 +12,20 @@
   color: var(--text-color);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
+
   overflow: hidden;
 
   &:hover {
-    cursor: pointer;
-    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  &.completed {
+    opacity: 0.5;
+    text-decoration: line-through;
   }
 }
+
 .task-content {
   width: 100%;
   padding: 8px;

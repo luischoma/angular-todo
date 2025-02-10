@@ -14,6 +14,10 @@ export class TaskItemComponent {
 
   constructor(private taskService: TaskService) {}
 
+  toggleTaskCompletion(): void {
+    this.taskService.toggleTaskCompletion(this.task.id);
+  }
+
   deleteTask(): void {
     //@TODO: Use proper dialog box instead of confirm
 

@@ -29,6 +29,8 @@ body {
   /* globals */
   --text-color: #000;
   --background-color: #6196ff;
+  --accent: #fff200;
+  --accent-contrast: #000000;
 
   /* Window (mac-like) container component */
   --window-shadow: 0 0 200px rgba(0, 0, 20, 0.5);
@@ -59,6 +61,8 @@ body {
   /* globals */
   --text-color: #fff;
   --background-color: #051e4f;
+  --accent: #fff200;
+  --accent-contrast: #000000;
 
   /* Window (mac-like) container component */
   --window-shadow: 0 0 100px rgba(156, 149, 149, 0.3);

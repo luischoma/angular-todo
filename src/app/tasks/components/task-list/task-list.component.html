@@ -1,3 +1,9 @@
-<div class="task-grid">
-  <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
+<div class="task-list-container">
+  <div class="task-grid">
+    <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
+  </div>
+
+  <button mat-fab class="add-task-btn">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>

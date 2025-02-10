@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+
+import { TaskService } from '../../services/task.service';
+
 import { Task } from 'src/app/core/models/task.model';
 
 @Component({
@@ -7,5 +10,15 @@ import { Task } from 'src/app/core/models/task.model';
   styleUrls: ['./task-item.component.scss'],
 })
 export class TaskItemComponent {
-  @Input() task: Task;
+  @Input() task!: Task;
+
+  constructor(private taskService: TaskService) {}
+
+  deleteTask(): void {
+    //@TODO: Use proper dialog box instead of confirm
+
+    if (confirm('Are you sure you want to delete this task?')) {
+      this.taskService.removeTask(this.task.id);
+    }
+  }
 }

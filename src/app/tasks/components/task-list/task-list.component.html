@@ -1,16 +1,32 @@
-<ng-container *ngIf="tasks$ | async as tasks">
-  <h2 *ngIf="tasks.length === 0" class="empty-message">No tasks available</h2>
+<div class="task-filter-container">
+  <mat-button-toggle-group
+    [(ngModel)]="selectedFilter"
+    (change)="onFilterChange($event.value)"
+    class="task-filter"
+  >
+    <mat-button-toggle [value]="TaskFilter.ALL">All</mat-button-toggle>
+    <mat-button-toggle [value]="TaskFilter.COMPLETED"
+      >Completed</mat-button-toggle
+    >
+    <mat-button-toggle [value]="TaskFilter.INCOMPLETE"
+      >Incomplete</mat-button-toggle
+    >
+  </mat-button-toggle-group>
+</div>
 
-  <div class="task-grid">
+<div class="task-list-container">
+  <h2 *ngIf="(tasks$ | async)?.length === 0" class="empty-message">
+    No tasks available
+  </h2>
+
+  <div class="task-grid" *ngIf="(tasks$ | async)?.length > 0">
     <app-task-item
-      *ngFor="let task of tasks"
+      *ngFor="let task of tasks$ | async"
       [task]="task"
-      (toggle)="toggleTaskCompletion(task.id)"
-      (delete)="removeTask(task.id)"
     ></app-task-item>
   </div>
 
   <button mat-fab class="add-task-btn" (click)="openAddTaskDialog()">
     <mat-icon>add</mat-icon>
   </button>
-</ng-container>
+</div>

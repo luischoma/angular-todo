@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -31,7 +33,9 @@ import { TaskDialogComponent } from './components/task-dialog/task-dialog.compon
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     FormsModule,
+    MatButtonToggleModule,
   ],
   exports: [TasksPageComponent],
 })

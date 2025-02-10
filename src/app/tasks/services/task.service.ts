@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Task } from '../../core/models/task.model';
 import { LocalStorageService } from '../../core/services/local-storage.service';
+import { TaskFilter } from 'src/app/core/enums/task-filter.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +12,8 @@ import { LocalStorageService } from '../../core/services/local-storage.service';
 export class TaskService {
   private readonly storageKey = 'tasks';
   private tasksStore: BehaviorSubject<Task[]>;
+  private filterStore = new BehaviorSubject<TaskFilter>(TaskFilter.ALL);
+
   tasks$: Observable<Task[]>;
 
   constructor(private localStorageService: LocalStorageService) {
@@ -19,7 +23,19 @@ export class TaskService {
     );
 
     this.tasksStore = new BehaviorSubject<Task[]>(savedTasks);
-    this.tasks$ = this.tasksStore.asObservable();
+
+    this.tasks$ = combineLatest([this.tasksStore, this.filterStore]).pipe(
+      map(([tasks, filter]) => {
+        switch (filter) {
+          case TaskFilter.COMPLETED:
+            return tasks.filter((task) => task.completed);
+          case TaskFilter.INCOMPLETE:
+            return tasks.filter((task) => !task.completed);
+          default:
+            return tasks;
+        }
+      })
+    );
   }
 
   getTasks(): Task[] {
@@ -46,5 +62,9 @@ export class TaskService {
       task.id === taskId ? { ...task, completed: !task.completed } : task
     );
     this.updateTasks(updatedTasks);
+  }
+
+  setFilter(filter: TaskFilter): void {
+    this.filterStore.next(filter);
   }
 }

@@ -43,3 +43,32 @@
   color: var(--text-color);
   margin-top: 20px;
 }
+
+.task-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.task-filter-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 16px;
+}
+
+.task-filter {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+mat-button-toggle {
+  text-transform: uppercase;
+
+  color: var(--elevation-color);
+  background-color: var(--elevation-background);
+
+  &.mat-button-toggle-checked {
+    background-color: var(--filter-active-bg);
+    color: var(--filter-active-color);
+    transform: scale(1.05);
+  }
+}

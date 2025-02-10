@@ -45,8 +45,8 @@ body {
 }
 
 .mat-dialog-container {
-  border: 1px solid var(--cloud-accent-color);
-  color: var(--text-color);
+  border: 3px solid var(--cloud-accent-color);
+  color: var(--cloud-text-color);
   padding: 24px;
   background-color: var(--cloud-bg-color);
 }
@@ -57,8 +57,6 @@ body {
   --background-color: #6196ff;
   --accent: #fff200;
   --accent-contrast: #000000;
-  --success-color: #049114;
-  --warn-color: #9c2a24;
 
   /* Window (mac-like) container component */
   --window-shadow: 0 0 200px rgba(0, 0, 20, 0.5);
@@ -85,8 +83,11 @@ body {
   --moon-transition: transform 1s ease-out, opacity 1s ease-in-out;
 
   /* Cloud color */
-  --cloud-bg-color: #8f8d8d;
-  --cloud-accent-color: #f0f0f0;
+  --cloud-bg-color: #f389a4;
+  --cloud-accent-color: #f7dc64;
+  --add-task-btn-color: #2d78f0;
+  --cancel-add-task-btn-color: #fe4848;
+  --cloud-text-color: #fff;
 
   /* Complete task button */
   --complete-toggle-bg: #94d86a;
@@ -103,8 +104,6 @@ body {
   --background-color: #051e4f;
   --accent: #fff200;
   --accent-contrast: #000000;
-  --success-color: #2f6b3d;
-  --warn-color: #ff5f57;
 
   /* Window (mac-like) container component */
   --window-shadow: 0 0 100px rgba(156, 149, 149, 0.3);
@@ -133,6 +132,14 @@ body {
   /* Complete task button */
   --complete-toggle-bg: #94d86a;
   --complete-toggle-icon: #000;
+
+  /* Cloud colors */
+  /* Cloud color */
+  --cloud-bg-color: #232323;
+  --cloud-accent-color: #fff7f7;
+  --add-task-btn-color: #0066aa;
+  --cancel-add-task-btn-color: #bb2323;
+  --cloud-text-color: #f7f7f7;
 
   /* Delete task button */
   --delete-toggle-bg: #ea6d6d;

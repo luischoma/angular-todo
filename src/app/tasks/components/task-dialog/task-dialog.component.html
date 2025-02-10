@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Add New Task</h2>
+
+<mat-dialog-content class="dialog-content">
+  <div class="input-container">
+    <mat-form-field class="full-width" style="color: black">
+      <mat-label style="color: black">Task Name</mat-label>
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button
+        style="color: black"
+        mat-icon-button
+        class="save-btn"
+        (click)="onConfirm()"
+        [disabled]="!taskName"
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button class="cancel-btn" (click)="onCancel()">
+        <mat-icon style="color: black">delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>

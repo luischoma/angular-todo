@@ -39,7 +39,7 @@ describe('TaskService', () => {
 
   describe('addTask', () => {
     it('should add a new task', () => {
-      const task: Task = { id: 1, name: 'New Task', completed: false };
+      const task: Task = { id: '1', name: 'New Task', completed: false };
 
       service.addTask(task);
 
@@ -51,30 +51,30 @@ describe('TaskService', () => {
 
   describe('removeTask', () => {
     it('should remove a task', () => {
-      const task1: Task = { id: 1, name: 'Task 1', completed: false };
-      const task2: Task = { id: 2, name: 'Task 2', completed: false };
+      const task1: Task = { id: '1', name: 'Task 1', completed: false };
+      const task2: Task = { id: '2', name: 'Task 2', completed: false };
       service.addTask(task1);
       service.addTask(task2);
 
-      service.removeTask(1);
+      service.removeTask('1');
 
       expect(service.getTasks().length).toBe(1);
-      expect(service.getTasks()[0].id).toBe(2);
+      expect(service.getTasks()[0].id).toBe('2');
       expect(mockLocalStorage.setItem).toHaveBeenCalledWith('tasks', [task2]);
     });
   });
 
   describe('toggleTaskCompletion', () => {
     it('should toggle the completion status of a task', () => {
-      const task: Task = { id: 1, name: 'Test Task', completed: false };
+      const task: Task = { id: '1', name: 'Test Task', completed: false };
 
       service.addTask(task);
 
-      service.toggleTaskCompletion(1);
+      service.toggleTaskCompletion('1');
 
       expect(service.getTasks()[0].completed).toBe(true);
       expect(mockLocalStorage.setItem).toHaveBeenCalledWith('tasks', [
-        { id: 1, name: 'Test Task', completed: true },
+        { id: '1', name: 'Test Task', completed: true },
       ]);
     });
   });

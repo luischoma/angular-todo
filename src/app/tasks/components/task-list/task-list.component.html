@@ -1,5 +1,7 @@
 <div class="task-list-container">
-  <div class="task-grid">
+  <h2 *ngIf="tasks.length === 0" class="empty-message">No tasks available</h2>
+
+  <div class="task-grid" *ngIf="tasks.length > 0">
     <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
   </div>
 

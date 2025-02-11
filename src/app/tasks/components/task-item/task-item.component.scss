@@ -1,4 +1,5 @@
 @import "/src/styles/action-buttons";
+@import "breakpoints";
 
 .task-item {
   width: inherit;
@@ -42,8 +43,12 @@
 
 .task-actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 16px;
+  justify-content: space-between;
+
+  @media (min-width: $breakpoint-tablet) {
+    justify-content: flex-end;
+    gap: 12px;
+  }
 }
 
 .complete-btn {

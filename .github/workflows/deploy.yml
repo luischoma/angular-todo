@@ -18,17 +18,17 @@ jobs:
         uses: actions/checkout@v3
 
       - name: node config
-        uses: actions/setup-node@v18
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 16
 
       - name: node deps
-        run: npm install
+        run: npm install --force
 
       - name: building
         run: npm run build -- --configuration=production
 
-      - name: 🚀 Deploy para Netlify
+      - name: netlify deploy!
         uses: nwtgck/actions-netlify@v2
         with:
           publish-dir: "./dist/"

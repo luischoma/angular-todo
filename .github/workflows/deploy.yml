@@ -7,37 +7,19 @@ on:
     paths-ignore:
       - ".github/**"
     commit_message:
-      - "deploy:*"
+      - "deploy:"
 
 jobs:
-  deploy:
+  push-to-production:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout config
+      - name: Checkout master branch
         uses: actions/checkout@v3
 
-      - name: node config
-        uses: actions/setup-node@v4
-        with:
-          node-version: 16
-
-      - name: node deps
-        run: npm install --force
-
-      - name: building
-        run: npm run build -- --configuration=production
-
-      - name: install netlify
-        run: npm install -g netlify-cli
-
-      - name: Deploy to Netlify
-        uses: jsmrcaga/action-netlify-deploy@v2.0.0
-        with:
-          build_directory: "dist"
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_MESSAGE: "Deployed from GitHub action"
-          NETLIFY_DEPLOY_TO_PROD: true
-          install_command: "echo Skipping installing the dependencies"
-          build_command: "echo Skipping building the web files"
+      - name: Push master to production
+        run: |
+          git fetch --unshallow
+          git checkout production
+          git merge master --no-edit
+          git push origin production

@@ -5,13 +5,10 @@
   gap: 16px;
   padding: 16px;
   flex-grow: 1;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
 
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-
-  @media (min-width: $breakpoint-desktop) {
-    grid-template-columns: repeat(5, minmax(130px, 300px));
-  }
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .task-list-container {
@@ -52,8 +49,13 @@
 
 .task-filter-container {
   display: flex;
-  justify-content: flex-end;
-  padding: 0 16px;
+  padding: 8px 16px;
+  justify-content: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    justify-content: flex-end;
+    padding: 0px 16px;
+  }
 }
 
 .task-filter {

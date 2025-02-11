@@ -39,9 +39,6 @@ body {
   min-width: 100%;
   background-color: transparent;
   align-items: center;
-
-  @media (max-width: $breakpoint-tablet) {
-  }
 }
 
 .mat-dialog-container {

@@ -1,0 +1,40 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - ".github/**"
+    commit_message:
+      - "deploy:*"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout config
+        uses: actions/checkout@v3
+
+      - name: node config
+        uses: actions/setup-node@v18
+        with:
+          node-version: 18
+
+      - name: node deps
+        run: npm install
+
+      - name: building
+        run: npm run build -- --configuration=production
+
+      - name: 🚀 Deploy para Netlify
+        uses: nwtgck/actions-netlify@v2
+        with:
+          publish-dir: "./dist/"
+          production-branch: master
+          deploy-message: "Auto deploy!"
+          enable-commit-comment: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
